@@ -31,3 +31,7 @@ func getCoffee(c *gin.Context) {
 	coffeelist, _ := coffee.GetCoffees()
 	c.String(http.StatusOK, " %s", coffeelist)
 }
+
+func AddTwoNumbers(a int, b int) int {
+	return a + b
+}
