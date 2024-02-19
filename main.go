@@ -2,17 +2,32 @@ package main
 
 import (
 	"coffeeshop/coffee"
-	"fmt"
+	"net/http"
+
+	"github.com/gin-gonic/gin"
 )
 
 func main() {
-	coffees, err := coffee.GetCoffees()
-	if err != nil {
-		fmt.Println(err)
-	}
-	for _, element := range coffees.List {
-		result := fmt.Sprintf("%s for $%v", element.Name, element.Price)
-		fmt.Println(result)
-	}
-	fmt.Println("Is Milk available?", func() string {if coffee.IsCoffeeAvailable("Milk") {return "Yes"} else {return "No"}}())
+	r := gin.Default()
+	r.LoadHTMLGlob("templates/*.html")
+	r.GET("/home", func(c *gin.Context) {
+		coffeelist, _ := coffee.GetCoffees()
+		c.HTML(http.StatusOK, "index.html", gin.H{
+			"list": coffeelist.List,
+		})
+	})
+	r.GET("/ping", ping)
+	r.GET("/coffee", getCoffee)
+	r.Run(":8080")
+}
+
+func ping(c *gin.Context) {
+	c.JSON(http.StatusOK, gin.H{
+		"message": "pong",
+	})
+}
+
+func getCoffee(c *gin.Context) {
+	coffeelist, _ := coffee.GetCoffees()
+	c.String(http.StatusOK, " %s", coffeelist)
 }

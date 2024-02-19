@@ -11,34 +11,6 @@
         {
             "name": "Espresso",
             "price": 2.50
-        },
-        {
-            "name": "Americano",
-            "price": 2.50
-        },
-        {
-            "name": "Mocha",
-            "price": 4.00
-        },
-        {
-            "name": "Macchiato",
-            "price": 3.00
-        },
-        {
-            "name": "Flat White",
-            "price": 3.50
-        },
-        {
-            "name": "Long Black",
-            "price": 3.00
-        },
-        {
-            "name": "Affogato",
-            "price": 4.00
-        },
-        {
-            "name": "Iced Coffee",
-            "price": 4.00
         }
     ]
 }

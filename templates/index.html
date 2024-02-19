@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>The Coffeeshop</title>
+    </head>
+    <body>
+        <h1>List Coffees</h1>
+        {{ range .list }}
+            Name: {{ .Name }},
+            Price: {{ .Price }},
+        {{ end }}
+    </body>
+</html>
